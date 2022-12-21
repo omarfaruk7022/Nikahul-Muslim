@@ -76,7 +76,7 @@ const Biodata = () => {
                   ></path>
                 </svg>
                 <span class="flex-1 ml-3 whitespace-nowrap">
-                  শিক্ষাগত যোগ্যতা
+                  নাম
                 </span>
               </Link>
             </li>
