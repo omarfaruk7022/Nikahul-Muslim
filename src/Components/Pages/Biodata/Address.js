@@ -21,13 +21,17 @@ const Address = () => {
       if (permanent_address === "" || present_address === "" || living === "") {
         toast.error("সকল ঘর পুরন করুন");
       } else {
-        fetch("http://localhost:5000/address", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        });
+        fetch(`http://localhost:5000/address/${email}`, {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+          })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+          });
         toast.success("ঠিকানা সংরক্ষণ করা হয়েছে");
       }
     }
@@ -36,7 +40,10 @@ const Address = () => {
     <div>
       <form onSubmit={handleSave}>
         <div className=" p-8 w-96 lg:w-[600px] m-auto  shadow-lg">
-          <div className="my-12">
+          <div className="my-12 border p-5">
+            <h1 className="text-center text-pink-400 font-bold mb-16">
+              ঠিকানা
+            </h1>
             <h1 className="text-purple-800 text-sm mb-2">স্থায়ী ঠিকানা *</h1>
             <label for="underline_select" class="sr-only">
               Underline select
@@ -61,7 +68,7 @@ const Address = () => {
               বাসার নাম্বার না দিয়ে এলাকা সহ ঠিকানা লিখুন। যেমনঃ মিরপুর-২,ঢাকা।
             </label>
           </div>
-          <div className="my-12">
+          <div className="my-12 border p-5">
             <h1 className="text-purple-800 text-sm mb-2">বর্তমান ঠিকানা *</h1>
             <label for="underline_select" class="sr-only">
               Underline select

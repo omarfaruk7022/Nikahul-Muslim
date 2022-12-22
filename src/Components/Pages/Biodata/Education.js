@@ -19,13 +19,17 @@ const Education = () => {
       if (education_select === "..." || className === "") {
         toast.error("সকল ঘর পুরন করুন");
       } else {
-        fetch("http://localhost:5000/education", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        });
+        fetch(`http://localhost:5000/education/${email}`, {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+          })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+          });
         toast.success("শিক্ষাগত যোগ্যতা সংরক্ষণ করা হয়েছে");
       }
     }
@@ -34,7 +38,10 @@ const Education = () => {
     <div>
       <form onSubmit={handleSave}>
         <div className=" p-8 w-96 lg:w-[600px] m-auto  shadow-lg">
-          <div className="my-12">
+          <div className="my-12 border p-5">
+            <h1 className="text-center text-pink-400 font-bold mb-16">
+              শিক্ষাগত যোগ্যতা
+            </h1>
             <h1 className="text-purple-800 text-sm mb-2">
               কোন মাধ্যমে পড়াশোনা করেছেন? *
             </h1>
@@ -55,7 +62,7 @@ const Education = () => {
               বাসার নাম্বার না দিয়ে এলাকা সহ ঠিকানা লিখুন। যেমনঃ মিরপুর-২,ঢাকা।
             </label> */}
           </div>
-          <div className="my-12">
+          <div className="my-12 border p-5">
             <h1 className="text-purple-800 text-sm mb-2">জামাত/ক্লাস</h1>
             <label for="underline_select" class="sr-only">
               Underline select

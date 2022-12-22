@@ -60,12 +60,16 @@ const PersonalDoc = () => {
       ) {
         toast.error("সকল ঘর পুরন করুন");
       } else {
-        fetch("http://localhost:5000/personalDocs", {
-          method: "POST",
+        fetch(`http://localhost:5000/personalDocs/${email}`, {
+          method: "PUT",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(data),
+        })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
         });
         toast.success("সংরক্ষণ করা হয়েছে");
       }
@@ -75,7 +79,8 @@ const PersonalDoc = () => {
     <div>
       <form onSubmit={handleSave}>
         <div className=" p-8 w-96 lg:w-[600px] m-auto  shadow-lg">
-          <div className="my-12">
+          <h1 className="text-center text-pink-400 font-bold mb-20">ব্যক্তিগত তথ্য</h1>
+          <div className="my-12 border p-5">
             <h1 className="text-purple-800 text-sm mb-2">
               প্রতিদিন পাঁচ ওয়াক্ত নামাজ পড়া হয় ? *
             </h1>
@@ -100,7 +105,7 @@ const PersonalDoc = () => {
             </label>
             <label className="text-xs text-purple-800">বাংলায় লিখুন।</label>
           </div>
-          <div className="my-12">
+          <div className="my-12 border p-5">
             <h1 className="text-purple-800 text-sm mb-2">
               কত বছর/মাস যাবত ৫ ওয়াক্ত নামায শুরু করেছেন ?
             </h1>
@@ -125,7 +130,7 @@ const PersonalDoc = () => {
             </label>
             <label className="text-xs text-purple-800">বাংলায় লিখুন।</label>
           </div>
-          <div className="my-12">
+          <div className="my-12 border p-5">
             <h1 className="text-purple-800 text-sm mb-2">
               মাহরাম/নন-মাহরাম মেনে চলেন কি? *
             </h1>
@@ -175,7 +180,7 @@ const PersonalDoc = () => {
             </label>
             <label className="text-xs text-purple-800">বাংলায় লিখুন।</label>
           </div>
-          <div className="my-12">
+          <div className="my-12 border p-5">
             <h1 className="text-purple-800 text-sm mb-2">
               কোন মাঝহাব অনুসরণ করেন? *
             </h1>
@@ -200,7 +205,7 @@ const PersonalDoc = () => {
             </label>
             <label className="text-xs text-purple-800">বাংলায় লিখুন।</label>
           </div>
-          <div className="my-12">
+          <div className="my-12 border p-5">
             <h1 className="text-purple-800 text-sm mb-2">
               কোনো রাজনৈতিক দর্শন থাকলে লিখুন *
             </h1>
@@ -225,7 +230,7 @@ const PersonalDoc = () => {
             </label>
             <label className="text-xs text-purple-800">বাংলায় লিখুন।</label>
           </div>
-          <div className="my-12">
+          <div className="my-12 border p-5">
             <h1 className="text-purple-800 text-sm mb-2">
               নাটক/সিনেমা/সিরিয়াল/গান এসব দেখেন বা শুনেন? *
             </h1>
@@ -250,7 +255,7 @@ const PersonalDoc = () => {
             </label>
             <label className="text-xs text-purple-800">বাংলায় লিখুন।</label>
           </div>
-          <div className="my-12">
+          <div className="my-12 border p-5">
             <h1 className="text-purple-800 text-sm mb-2">
               মানসিক বা শারীরিক কোনো রোগ আছে কি? *
             </h1>
@@ -275,7 +280,7 @@ const PersonalDoc = () => {
             </label>
             <label className="text-xs text-purple-800">বাংলায় লিখুন।</label>
           </div>
-          <div className="my-12">
+          <div className="my-12 border p-5">
             <h1 className="text-purple-800 text-sm mb-2">
               দ্বীনের কোন বিশেষ মেহনতে যুক্ত আছেন? *
             </h1>
@@ -302,7 +307,7 @@ const PersonalDoc = () => {
               যেমনঃ তাবলীগ ইত্যাদি।
             </label>
           </div>
-          <div className="my-12">
+          <div className="my-12 border p-5">
             <h1 className="text-purple-800 text-sm mb-2">
               আপনি কি কোনো পীরের মুরিদ বা অনুসারী ? *
             </h1>
@@ -327,7 +332,7 @@ const PersonalDoc = () => {
             </label>
             <label className="text-xs text-purple-800">বাংলায় লিখুন।</label>
           </div>
-          <div className="my-12">
+          <div className="my-12 border p-5">
             <h1 className="text-purple-800 text-sm mb-2">
               আপনার পছন্দের অন্তত ৩ টি ইসলামী বই এর নাম লিখুন *
             </h1>
@@ -352,7 +357,7 @@ const PersonalDoc = () => {
             </label>
             <label className="text-xs text-purple-800">বাংলায় লিখুন।</label>
           </div>
-          <div className="my-12">
+          <div className="my-12 border p-5">
             <h1 className="text-purple-800 text-sm mb-2">
               আপনার পছন্দের অন্তত ৩ জন আলেমের নাম লিখুন *
             </h1>
@@ -377,7 +382,7 @@ const PersonalDoc = () => {
             </label>
             <label className="text-xs text-purple-800">বাংলায় লিখুন।</label>
           </div>
-          <div className="my-12">
+          <div className="my-12 border p-5">
             <h1 className="text-purple-800 text-sm mb-2">
               বিশেষ দ্বীনি বা দুনিয়াবি যোগ্যতা (যদি থাকে)
             </h1>
@@ -393,7 +398,7 @@ const PersonalDoc = () => {
               জানাতে অনিচ্ছুক হলে ঘরটি ফাঁকা রাখুন।
             </label>
           </div>
-          <div className="my-12">
+          <div className="my-12 border p-5">
             <h1 className="text-purple-800 text-sm mb-2">
               নিজের সম্পর্কে কিছু লিখুন *
             </h1>

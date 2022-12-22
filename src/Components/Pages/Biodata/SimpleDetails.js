@@ -55,12 +55,16 @@ const SimpleDetails = () => {
         income,
         email,
       };
-      fetch("http://localhost:5000/simpleData", {
-        method: "POST",
+      fetch(`http://localhost:5000/simpleData/${email}`, {
+        method: "PUT",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(data),
+      })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
       });
       toast.success("Data saved successfully");
     }
@@ -68,8 +72,9 @@ const SimpleDetails = () => {
   return (
     <div>
       <form onSubmit={handleSave}>
-        <div className="w-96 lg:w-[600px] m-auto mt-28 shadow-lg">
-          <div className="my-12 p-8">
+        <div className="p-8 w-96 lg:w-[600px] m-auto  shadow-lg">
+          <h1 className="text-center text-pink-400 font-bold mb-16">সাধারণ তথ্য</h1>
+          <div className="my-12 border p-5">
             <h1 className="text-purple-800 text-sm">বায়োডাটার ধরন *</h1>
             <label for="underline_select" class="sr-only">
               Underline select
@@ -88,7 +93,7 @@ const SimpleDetails = () => {
               </option>
             </select>
           </div>
-          <div className="my-12 p-8">
+          <div className="my-12 border p-5">
             <h1 className="text-purple-800 text-sm">বৈবাহিক অবস্থা *</h1>
             <label for="underline_select" class="sr-only">
               Underline select
@@ -106,7 +111,7 @@ const SimpleDetails = () => {
               <option className="text-black">বিপত্নীক</option>
             </select>
           </div>
-          <div className="my-12 p-8">
+          <div className="my-12 border p-5">
             <h1 className="text-purple-800 text-sm">স্থায়ী ঠিকানা (জেলা)*</h1>
             <label for="underline_select" class="sr-only">
               Underline select
@@ -183,7 +188,7 @@ const SimpleDetails = () => {
               <option className="text-black">নেত্রকোণা</option>
             </select>
           </div>
-          <div className="my-12 p-8">
+          <div className="my-12 border p-5">
             <h1 className="text-purple-800 text-sm">বিভাগ *</h1>
             <label for="underline_select" class="sr-only">
               Underline select
@@ -206,7 +211,7 @@ const SimpleDetails = () => {
               স্থায়ী ঠিকানা যে বিভাগের আওতাধীন *
             </label>
           </div>
-          <div className="my-12 p-8">
+          <div className="my-12 border p-5">
             <h1 className="text-purple-800 text-sm">বর্তমান ঠিকানা (জেলা)*</h1>
             <label for="underline_select" class="sr-only">
               Underline select
@@ -283,7 +288,7 @@ const SimpleDetails = () => {
               <option className="text-black">নেত্রকোণা</option>
             </select>
           </div>
-          <div className="my-12 p-8">
+          <div className="my-12 border p-5">
             <h1 className="text-purple-800 text-sm">বিভাগ *</h1>
             <label for="underline_select" class="sr-only">
               Underline select
@@ -306,7 +311,7 @@ const SimpleDetails = () => {
               বর্তমান ঠিকানা যে বিভাগের আওতাধীন *
             </label>
           </div>
-          <div className="my-12 p-8">
+          <div className="my-12 border p-5">
             <h1 className="text-purple-800 text-sm">জন্মসন (আসল) *</h1>
             <label for="underline_select" class="sr-only">
               Underline select
@@ -352,7 +357,7 @@ const SimpleDetails = () => {
               <option className="text-black">২০১২</option>
             </select>
           </div>
-          <div className="my-12 p-8">
+          <div className="my-12 border p-5">
             <h1 className="text-purple-800 text-sm">গাত্রবর্ণ *</h1>
             <label for="underline_select" class="sr-only">
               Underline select
@@ -370,7 +375,7 @@ const SimpleDetails = () => {
               <option className="text-black"> উজ্জ্বল ফর্সা</option>
             </select>
           </div>
-          <div className="my-12 p-8">
+          <div className="my-12 border p-5">
             <h1 className="text-purple-800 text-sm">উচ্চতা *</h1>
             <label for="underline_select" class="sr-only">
               Underline select
@@ -413,7 +418,7 @@ const SimpleDetails = () => {
               <option className="text-black">৬'৬''</option>
             </select>
           </div>
-          <div className="my-12 p-8">
+          <div className="my-12 border p-5">
             <h1 className="text-purple-800 text-sm">ওজন *</h1>
             <label for="underline_select" class="sr-only">
               Underline select
@@ -521,7 +526,7 @@ const SimpleDetails = () => {
               <option className="text-black">১২৫ কেজি</option>
             </select>
           </div>
-          <div className="my-12 p-8">
+          <div className="my-12 border p-5">
             <h1 className="text-purple-800 text-sm">রক্তের গ্রুপ *</h1>
             <label for="underline_select" class="sr-only">
               Underline select
@@ -543,7 +548,7 @@ const SimpleDetails = () => {
               <option className="text-black">O- (নেগেটিভ)</option>
             </select>
           </div>
-          <div className="my-12 p-8">
+          <div className="my-12 border p-5">
             <h1 className="text-purple-800 text-sm mb-2">পেশা *</h1>
             <label for="underline_select" class="sr-only">
               Underline select
@@ -569,7 +574,7 @@ const SimpleDetails = () => {
               জন্য সামনে প্রশ্ন আছে।
             </label>
           </div>
-          <div className="my-12 p-8">
+          <div className="my-12 border p-5">
             <h1 className="text-purple-800 text-sm mb-2">মাসিক আয়</h1>
             <label for="underline_select" class="sr-only">
               Underline select

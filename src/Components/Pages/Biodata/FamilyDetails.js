@@ -25,7 +25,7 @@ const FamilyDetails = () => {
       brothers,
       about_relative,
       about_money,
-        email,
+      email,
     };
     if (email) {
       if (
@@ -39,13 +39,17 @@ const FamilyDetails = () => {
       ) {
         toast.error("সকল ঘর পুরন করুন");
       } else {
-        fetch("http://localhost:5000/familyDetails", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        });
+        fetch(`http://localhost:5000/familyDetails/${email}`, {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+          })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+          });
         toast.success("পরিবার বিবরণ সংরক্ষণ করা হয়েছে");
       }
     }
@@ -54,7 +58,11 @@ const FamilyDetails = () => {
     <div>
       <form onSubmit={handleSave}>
         <div className=" p-8 w-96 lg:w-[600px] m-auto  shadow-lg">
-          <div className="my-12">
+            <h1 className="text-center text-pink-400 font-bold mb-16">
+              {" "}
+              পারিবারিক তথ্য
+            </h1>
+          <div className="my-12 border p-5">
             <h1 className="text-purple-800 text-sm mb-2">
               পিতার নাম (শুধুমাত্র আপনি ও কতৃপক্ষ বাদে কেউ দেখতে পাচ্ছে না) *
             </h1>
@@ -83,7 +91,7 @@ const FamilyDetails = () => {
               অর্থাৎ আপনি এবং ওয়েবসাইট কতৃপক্ষ বাদে কেউ এই নাম দেখতে পাবে না।
             </label>
           </div>
-          <div className="my-12">
+          <div className="my-12 border p-5">
             <h1 className="text-purple-800 text-sm mb-2">
               মাতার নাম (শুধুমাত্র আপনি ও কতৃপক্ষ বাদে কেউ দেখতে পাচ্ছে না) *
             </h1>
@@ -112,7 +120,7 @@ const FamilyDetails = () => {
               আপনি এবং ওয়েবসাইট কতৃপক্ষ বাদে কেউ এই নাম দেখতে পাবে না।
             </label>
           </div>
-          <div className="my-12">
+          <div className="my-12 border p-5">
             <h1 className="text-purple-800 text-sm mb-2">পিতার পেশা *</h1>
             <label for="underline_select" class="sr-only">
               Underline select
@@ -138,7 +146,7 @@ const FamilyDetails = () => {
               ছিলেন।
             </label>
           </div>
-          <div className="my-12">
+          <div className="my-12 border p-5">
             <h1 className="text-purple-800 text-sm mb-2">মাতার পেশা *</h1>
             <label for="underline_select" class="sr-only">
               Underline select
@@ -164,7 +172,7 @@ const FamilyDetails = () => {
               ছিলেন।
             </label>
           </div>
-          <div className="my-12">
+          <div className="my-12 border p-5">
             <h1 className="text-purple-800 text-sm mb-2">বোন কয়জন? *</h1>
             <label for="underline_select" class="sr-only">
               Underline select
@@ -191,7 +199,7 @@ const FamilyDetails = () => {
               বাসার নাম্বার না দিয়ে এলাকা সহ ঠিকানা লিখুন। যেমনঃ মিরপুর-২,ঢাকা।
             </label> */}
           </div>
-          <div className="my-12">
+          <div className="my-12 border p-5">
             <h1 className="text-purple-800 text-sm mb-2">ভাই কয়জন? *</h1>
             <label for="underline_select" class="sr-only">
               Underline select
@@ -218,9 +226,9 @@ const FamilyDetails = () => {
               বাসার নাম্বার না দিয়ে এলাকা সহ ঠিকানা লিখুন। যেমনঃ মিরপুর-২,ঢাকা।
             </label> */}
           </div>
-          <div className="my-12">
+          <div className="my-12 border p-5">
             <h1 className="text-purple-800 text-sm mb-2">চাচা মামাদের পেশা</h1>
-            
+
             <textarea
               name="about_relative"
               id="message"
@@ -232,7 +240,7 @@ const FamilyDetails = () => {
               জানাতে অনিচ্ছুক হলে ঘরটি ফাঁকা রাখুন।
             </label>
           </div>
-          <div className="my-12">
+          <div className="my-12 border p-5">
             <h1 className="text-purple-800 text-sm mb-2">
               পরিবারের অর্থনৈতিক ও সামাজিক অবস্থা *
             </h1>

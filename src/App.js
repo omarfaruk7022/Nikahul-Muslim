@@ -18,6 +18,7 @@ import PersonalDoc from "./Components/Pages/Biodata/PersonalDoc";
 import AboutWedding from "./Components/Pages/Biodata/AboutWedding";
 import EtcDoc from "./Components/Pages/Biodata/EtcDoc";
 import Qualification from "./Components/Pages/Biodata/Qualification";
+import ContactNumber from "./Components/Pages/Biodata/ContactNumber";
 
 function App() {
   return (
@@ -55,6 +56,7 @@ function App() {
           <Route path="aboutWedding" element={<AboutWedding/>} />
           <Route path="otherDetails" element={<EtcDoc/>} />
           <Route path="qualification" element={<Qualification/>} />
+          <Route path="contactNumber" element={<ContactNumber/>} />
           
         </Route>
       </Routes>
