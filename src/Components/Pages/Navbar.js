@@ -4,7 +4,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import auth from "../../firebase.init";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 
 const Navbar = () => {
   const [user] = useAuthState(auth);
@@ -66,21 +66,21 @@ const Navbar = () => {
               </Link>
 
               {user ? (
-                  <>
-                    <button
-                      onClick={handleSignOut}
-                      className="block h-16 transition duration-200 ease-in border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-primary "
-                    >
-                      লগ আউট
-                    </button>
-                  </>
-                ) : (
-                  <Link to="/login">
-                    <button className="block h-16 transition duration-200 ease-in border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-primary">
-                      লগইন
-                    </button>
-                  </Link>
-                )}
+                <>
+                  <button
+                    onClick={handleSignOut}
+                    className="block h-16 transition duration-200 ease-in border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-primary "
+                  >
+                    লগ আউট
+                  </button>
+                </>
+              ) : (
+                <Link to="/login">
+                  <button className="block h-16 transition duration-200 ease-in border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-primary">
+                    লগইন
+                  </button>
+                </Link>
+              )}
             </ul>
           </div>
         </div>
@@ -116,8 +116,6 @@ const Navbar = () => {
                   যোগাযোগ
                 </Link>
 
-                
-
                 {user ? (
                   <>
                     <button
@@ -139,6 +137,7 @@ const Navbar = () => {
               <div class="ml-8 flex items-center">
                 <div class="flex items-center divide-x divide-gray-100 border-x border-gray-100">
                   <span>
+                    <div className="dropdown">
                     <Link
                       href="/account"
                       class="block transition duration-200 ease-in border-b-4 border-transparent p-6 hover:text-primary"
@@ -160,13 +159,26 @@ const Navbar = () => {
 
                       <span class="sr-only"> Account </span>
                     </Link>
+                      <ul
+                        tabIndex={0}
+                        className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
+                      >
+                        <li>
+                          <a>Item 1</a>
+                        </li>
+                        <li>
+                          <a>Item 2</a>
+                        </li>
+                      </ul>
+                    </div>
+                   
                   </span>
                 </div>
               </div>
             </div>
           </ul>
         </div>
-          
+
         <ToastContainer />
       </div>
     </div>

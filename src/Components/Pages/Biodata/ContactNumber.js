@@ -28,17 +28,20 @@ const ContactNumber = () => {
       ) {
         toast.error("সকল ঘর পুরন করুন");
       } else {
-        fetch(`http://localhost:5000/contactNumber/${email}`, {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        })
-        .then((res) => res.json())
-        .then((data) => {
-          console.log(data);
-        });
+        fetch(
+          `https://nikahul-muslim-server-production.up.railway.app/contactNumber/${email}`,
+          {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+          }
+        )
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+          });
         toast.success("সংরক্ষণ করা হয়েছে");
       }
     }

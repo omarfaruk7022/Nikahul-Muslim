@@ -55,8 +55,8 @@ const Biodata = () => {
     // className="drawer drawer-mobile"
     >
       <aside class="">
-        <div class="overflow-y-auto py-4 px-28 bg-gray-50 rounded">
-          <ul class=" grid lg:grid-cols-6 grid-cols-1">
+        <div class="overflow-y-auto py-4 px-0 lg:px-28 bg-gray-50 rounded">
+          <ul class=" grid lg:grid-cols-6 grid-cols-2">
           <li>
               <Link
                 to="/biodata"
@@ -248,7 +248,7 @@ const Biodata = () => {
                     clip-rule="evenodd"
                   ></path>
                 </svg>
-                <span class="flex-1 ml-3 whitespace-nowrap">
+                <span class="flex-1 ml-3 lg:text-[17px] text-xs whitespace-nowrap">
                   যেমন জীবনসঙ্গী আশা করেন
                 </span>
               </Link>
@@ -300,7 +300,7 @@ const Biodata = () => {
           </ul>
         </div>
       </aside>
-      <h1 className="text-purple-900 text-center">বিঃদ্রঃ ধাপে ধাপে আপনার সকল ইনফরমেশন প্রদান করুন </h1>
+      <h1 className="text-purple-900 text-center p-5">বিঃদ্রঃ ধাপে ধাপে আপনার সকল ইনফরমেশন প্রদান করুন </h1>
 
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content ">

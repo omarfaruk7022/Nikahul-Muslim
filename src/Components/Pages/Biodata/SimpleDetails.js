@@ -55,17 +55,20 @@ const SimpleDetails = () => {
         income,
         email,
       };
-      fetch(`http://localhost:5000/simpleData/${email}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-      });
+      fetch(
+        `https://nikahul-muslim-server-production.up.railway.app/simpleData/${email}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        }
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+        });
       toast.success("Data saved successfully");
     }
   };
@@ -73,7 +76,9 @@ const SimpleDetails = () => {
     <div>
       <form onSubmit={handleSave}>
         <div className="p-8 w-96 lg:w-[600px] m-auto  shadow-lg">
-          <h1 className="text-center text-pink-400 font-bold mb-16">সাধারণ তথ্য</h1>
+          <h1 className="text-center text-pink-400 font-bold mb-16">
+            সাধারণ তথ্য
+          </h1>
           <div className="my-12 border p-5">
             <h1 className="text-purple-800 text-sm">বায়োডাটার ধরন *</h1>
             <label for="underline_select" class="sr-only">

@@ -19,13 +19,16 @@ const AboutWedding = () => {
       if (approved_select === "..." || about_wedding === "") {
         toast.error("সকল ঘর পুরন করুন");
       } else {
-        fetch(`http://localhost:5000/aboutWedding/${email}`, {
+        fetch(
+          `https://nikahul-muslim-server-production.up.railway.app/aboutWedding/${email}`,
+          {
             method: "PUT",
             headers: {
               "Content-Type": "application/json",
             },
             body: JSON.stringify(data),
-          })
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             console.log(data);

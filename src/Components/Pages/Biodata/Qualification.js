@@ -43,17 +43,20 @@ const Qualification = () => {
       ) {
         toast.error("সকল ঘর পুরন করুন");
       } else {
-        fetch(`http://localhost:5000/qualification/${email}`, {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        })
-        .then((res) => res.json())
-        .then((data) => {
-          console.log(data);
-        });
+        fetch(
+          `https://nikahul-muslim-server-production.up.railway.app/qualification/${email}`,
+          {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+          }
+        )
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+          });
         toast.success("সফলভাবে সেভ হয়েছে");
       }
     }
@@ -62,10 +65,10 @@ const Qualification = () => {
     <div>
       <form onSubmit={handleSave}>
         <div className=" p-8 w-96 lg:w-[600px] m-auto  shadow-lg">
-            <h1 className="text-center text-pink-400 font-bold mb-16">
-              {" "}
-              যেমন জীবনসঙ্গী আশা করেন
-            </h1>
+          <h1 className="text-center text-pink-400 font-bold mb-16">
+            {" "}
+            যেমন জীবনসঙ্গী আশা করেন
+          </h1>
           <div className="my-12 border p-5">
             <h1 className="text-purple-800 text-sm mb-2">বয়স *</h1>
             <label for="underline_select" class="sr-only">

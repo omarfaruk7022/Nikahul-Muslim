@@ -21,13 +21,16 @@ const Address = () => {
       if (permanent_address === "" || present_address === "" || living === "") {
         toast.error("সকল ঘর পুরন করুন");
       } else {
-        fetch(`http://localhost:5000/address/${email}`, {
+        fetch(
+          `https://nikahul-muslim-server-production.up.railway.app/address/${email}`,
+          {
             method: "PUT",
             headers: {
               "Content-Type": "application/json",
             },
             body: JSON.stringify(data),
-          })
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             console.log(data);

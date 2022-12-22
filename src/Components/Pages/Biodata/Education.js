@@ -19,13 +19,16 @@ const Education = () => {
       if (education_select === "..." || className === "") {
         toast.error("সকল ঘর পুরন করুন");
       } else {
-        fetch(`http://localhost:5000/education/${email}`, {
+        fetch(
+          `https://nikahul-muslim-server-production.up.railway.app/education/${email}`,
+          {
             method: "PUT",
             headers: {
               "Content-Type": "application/json",
             },
             body: JSON.stringify(data),
-          })
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             console.log(data);
